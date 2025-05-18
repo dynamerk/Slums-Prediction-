@@ -1,6 +1,8 @@
 # Future-slum-prediction
 This code is used for predicting future slum growth based on LULC change in Kibera and Katanga using a Python-based regression model.
 #start with Kibera, Nariobi , kenya
+
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
