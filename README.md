@@ -51,7 +51,7 @@ in Kibera and Katanga using historical data and regression analysis.
 6. Save Outputs
    Export plots as `.png` images for reporting and presentation  
 
-Contact
+### Contact
 Developed by: Dyna Uwambajimana
 Email: dynamereki@gmail.com
 GitHub: @dynamerk
