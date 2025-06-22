@@ -1,92 +1,37 @@
-# Future-slum-prediction
-This code is used for predicting future slum growth based on LULC change in Kibera and Katanga using a Python-based regression model.
-#start with Kibera, Nariobi , kenya
+Future Slum Growth Prediction — Kibera (Nairobi, Kenya) & Katanga (Kampala, Uganda)
+Overview
+This project utilizes linear regression modeling to analyze and predict changes in land use and land cover (LULC) within two major urban slums: Kibera in Nairobi, Kenya, and Katanga in Kampala, Uganda. The model leverages historical LULC percentage data from 2000 to 2024 to forecast trends through 2030.
 
+Key Findings & Visual Insights
+Kibera, Nairobi
+Built-up Area: Exhibits a consistent increase from approximately 83% in 2000 to an estimated 95% by 2030, reflecting rapid urban expansion.
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-from sklearn.linear_model import LinearRegression
+Bare Land: Shows a significant decline, indicating conversion of open land to built environment.
 
-# years = (Kibera slum)
-years = np.array([2000, 2003, 2006, 2009, 2012, 2015, 2018, 2021, 2024]).reshape(-1, 1)
+Vegetation Cover & Water Density: Both demonstrate a decreasing trend, signaling potential loss of green spaces and water bodies, which may affect urban ecosystem health.
 
-data = {
-    'BL': [14.2, 7.5, 2.2, 1.8, 0.1, 2.7, 0.9, 2.7, 4.9],
-    'BA': [82.7, 86.7, 91.2, 93.0, 95.1, 95.8, 96.0, 94.7, 93.0],
-    'VC': [1.3, 4.3, 5.8, 5.2, 4.9, 3.5, 3.1, 2.6, 2.1],
-    'WD': [1.8, 1.5, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-}
+Katanga, Kampala
+Built-up Area: Increases steadily from about 65% to over 90%, highlighting significant densification and development.
 
-classes = ['BL', 'BA', 'VC', 'WD']
-colors = ['blue', 'green', 'red', 'purple']
-titles = ['BL Class', 'BA Class', 'VC Class', 'WD Class']
+Bare Land: Displays fluctuations but trends toward a moderate presence by 2030.
 
-plt.figure(figsize=(12, 7))
-for i, cls in enumerate(classes):
-    y = np.array(data[cls])
-    model = LinearRegression()
-    model.fit(years, y)
-    trendline = model.predict(years)
-    year_2030 = np.array([[2030]])
-    prediction = model.predict(year_2030)[0]
+Vegetation Cover & Water Density: Markedly decline over time, consistent with urban growth pressures.
 
-    ax = plt.subplot(2, 2, i+1)
-    ax.plot(years, y, 'o-', color=colors[i], label='Observed')
-    ax.plot(years, trendline, '--', color=colors[i], label='Trendline')
-    ax.plot(2030, prediction, 'ro', label=f'2030 Prediction: {prediction:.2f}%')
+Methodology
+Data: Historical LULC percentages for four classes — Bare Land (BL), Built-up Area (BA), Vegetation Cover (VC), and Water Density (WD).
 
-    ax.set_title(f"{titles[i]} Built-up Area (2000–2030)")
-    ax.set_xlabel("Year")
-    ax.set_ylabel("Built-up Area (%)")
+Modeling: Linear regression models fitted separately for each LULC class using time series data.
 
-    # Grid removed (no ax.grid call here)
-    ax.legend()
+Prediction: Extrapolation of trends to estimate LULC proportions in 2030.
 
-plt.tight_layout()
-plt.savefig("Kibera_2030_predictions.png", dpi=300)
-plt.show()
-# second, Katanga,kampala,UGanda.
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.linear_model import LinearRegression
+Visualization: Comparative plots showing observed data points, regression trendlines, and 2030 predictions.
 
-# Years (Katanga slum)
-years = np.array([2000, 2003, 2006, 2009, 2012, 2015, 2018, 2021, 2024]).reshape(-1, 1)
+Implications
+The expansion of built-up areas at the expense of vegetation and water highlights challenges for urban sustainability and environmental management.
 
-# Percentage data from your table for BL, BA, VC, WD
-data_percent = {
-    'BL': [0, 0, 0, 21.2, 2.7, 12.5, 6.6, 1.8, 2.18],
-    'BA': [64.5, 65.1, 67.7, 67.9, 69.9, 70.3, 70.7, 90.4, 93.15],
-    'VC': [29.3, 28.9, 32.3, 10.9, 27.4, 17.1, 22.7, 3.8, 4.67],
-    'WD': [6.2, 5.9, 0, 0, 0, 0, 0, 0, 0]
-}
+Predictive modeling provides planners and policymakers with actionable insights to guide slum upgrading, infrastructure development, and environmental conservation strategies.
 
-classes = ['BL', 'BA', 'VC', 'WD']
-colors = ['blue', 'green', 'red', 'purple']
-titles = ['BL Class', 'BA Class', 'VC Class', 'WD Class']
+Outputs
+Visualizations: High-resolution plots illustrating LULC trends and future projections for Kibera and Katanga.
 
-plt.figure(figsize=(12, 7))
-for i, cls in enumerate(classes):
-    y = np.array(data_percent[cls])
-    model = LinearRegression()
-    model.fit(years, y)
-    trendline = model.predict(years)
-    year_2030 = np.array([[2030]])
-    prediction = model.predict(year_2030)[0]
-
-    ax = plt.subplot(2, 2, i+1)
-    ax.plot(years, y, 'o-', color=colors[i], label='Observed')
-    ax.plot(years, trendline, '--', color=colors[i], label='Trendline')
-    ax.plot(2030, prediction, 'ro', label=f'2030 Prediction: {prediction:.2f}%')
-
-    ax.set_title(f"{titles[i]} Built-up Area (2000–2030)")
-    ax.set_xlabel("Year")
-    ax.set_ylabel("Built-up Area (%)")
-
-    # No grid lines
-    ax.legend()
-
-plt.tight_layout()
-plt.savefig("Kibera_2030_predictions_newdata.png", dpi=300)
-plt.show()
+Codebase: Python scripts implementing the regression analysis and visualization workflow.
