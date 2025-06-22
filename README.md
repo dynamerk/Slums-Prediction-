@@ -1,37 +1,61 @@
-Future Slum Growth Prediction — Kibera (Nairobi, Kenya) & Katanga (Kampala, Uganda)
-Overview
-This project utilizes linear regression modeling to analyze and predict changes in land use and land cover (LULC) within two major urban slums: Kibera in Nairobi, Kenya, and Katanga in Kampala, Uganda. The model leverages historical LULC percentage data from 2000 to 2024 to forecast trends through 2030.
+📈 Future Slum Growth Prediction — Kibera & Katanga
 
-Key Findings & Visual Insights
-Kibera, Nairobi
-Built-up Area: Exhibits a consistent increase from approximately 83% in 2000 to an estimated 95% by 2030, reflecting rapid urban expansion.
+This project uses linear regression to analyze and predict land use and land cover (LULC) changes in two major urban slums: Kibera in Nairobi, Kenya, and Katanga in Kampala, Uganda. It forecasts future slum growth based on historical LULC data and visualizes trends with clear comparative plots.
 
-Bare Land: Shows a significant decline, indicating conversion of open land to built environment.
+🎯 Objective
+To model and predict LULC change (2000–2030) focusing on:
 
-Vegetation Cover & Water Density: Both demonstrate a decreasing trend, signaling potential loss of green spaces and water bodies, which may affect urban ecosystem health.
+Built-up Area (BA)
 
-Katanga, Kampala
-Built-up Area: Increases steadily from about 65% to over 90%, highlighting significant densification and development.
+Bare Land (BL)
 
-Bare Land: Displays fluctuations but trends toward a moderate presence by 2030.
+Vegetation Cover (VC)
 
-Vegetation Cover & Water Density: Markedly decline over time, consistent with urban growth pressures.
+Water Density (WD)
 
-Methodology
-Data: Historical LULC percentages for four classes — Bare Land (BL), Built-up Area (BA), Vegetation Cover (VC), and Water Density (WD).
+in Kibera and Katanga using historical data and regression analysis.
 
-Modeling: Linear regression models fitted separately for each LULC class using time series data.
+🧠 Aim of the Project
+Understand historical trends of LULC change in slum areas
 
-Prediction: Extrapolation of trends to estimate LULC proportions in 2030.
+Predict future LULC proportions through 2030
 
-Visualization: Comparative plots showing observed data points, regression trendlines, and 2030 predictions.
+Inform urban planning, slum upgrading, and environmental management
 
-Implications
-The expansion of built-up areas at the expense of vegetation and water highlights challenges for urban sustainability and environmental management.
+Provide a reproducible tool for:
 
-Predictive modeling provides planners and policymakers with actionable insights to guide slum upgrading, infrastructure development, and environmental conservation strategies.
+Urban planners
 
-Outputs
-Visualizations: High-resolution plots illustrating LULC trends and future projections for Kibera and Katanga.
+GIS analysts
 
-Codebase: Python scripts implementing the regression analysis and visualization workflow.
+Environmental researchers
+
+📊 Data Requirements
+Parameter	Description
+Years	2000, 2003, ..., 2024 (historical data points)
+LULC Classes	BL, BA, VC, WD percentages
+Locations	Kibera (Nairobi), Katanga (Kampala)
+
+Step-by-Step Workflow
+Import Libraries
+Required: matplotlib, numpy, pandas, scikit-learn
+
+Define Input Data
+Historical LULC percentages for each class and year for both locations
+
+Train Linear Regression Models
+Fit models for each LULC class using historical years as independent variables
+
+Generate Predictions
+Predict LULC percentages for the year 2030
+
+Visualization
+Create grouped plots showing observed data, trendlines, and 2030 predictions
+
+Save Outputs
+Export plots as .png images for reporting and presentation
+
+Example to Save Plot Image
+python code: 
+plt.savefig("Kibera_2030_predictions.png", dpi=300)
+print("Plot saved as Kibera_2030_predictions.png")
